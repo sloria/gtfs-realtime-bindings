@@ -18,5 +18,6 @@ RUN mkdir -p google/transit
 RUN mkdir tests
 COPY python/tests/test_gtfs_realtime_pb2.py /lib/tests/test_gtfs_realtime_pb2.py
 COPY python/tests/vehicle_position.pb /lib/tests/vehicle_position.pb
+RUN touch google/transit/py.typed
 
-CMD protoc --python_out=google/transit --proto_path=.. gtfs-realtime.proto && nose2
+CMD protoc --python_out=google/transit --pyi_out=google/transit --proto_path=.. gtfs-realtime.proto && nose2
